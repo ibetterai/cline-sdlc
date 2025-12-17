@@ -1,0 +1,64 @@
+{
+  "name": "cline",
+  "version": "1.0.0",
+  "description": "AI-Enhanced SDLC Framework for Cline",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "build": "npm run lint && npm test",
+    "docs": "jsdoc -c jsdoc.conf.json",
+    "ai:analyze": "node scripts/ai-code-analysis.js",
+    "ai:test": "node scripts/generate-tests.js && npm test",
+    "ai:docs": "node scripts/generate-docs.js",
+    "ai:review": "node scripts/ai-code-review.js",
+    "prepare": "husky install"
+  },
+  "keywords": ["ai", "sdlc", "automation", "code-review", "testing", "documentation"],
+  "author": "AI SDLC Framework",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "eslint": "^8.50.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.3",
+    "jest": "^29.7.0",
+    "jsdoc": "^4.0.2",
+    "lint-staged": "^14.0.1",
+    "nyc": "^15.1.0",
+    "prettier": "^3.0.3"
+  },
+  "dependencies": {
+    "axios": "^1.5.0",
+    "chalk": "^4.1.2",
+    "glob": "^10.3.0",
+    "inquirer": "^8.2.6",
+    "lodash": "^4.17.21",
+    "marked": "^9.1.0",
+    "semver": "^7.5.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/*.test.js",
+      "!node_modules/**"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["text", "lcov", "html"]
+  }
+}
